@@ -19,89 +19,39 @@
     "where": "Institute of the Incarnate Word",
     "role": "Humanitarian and Social Worker",
     "from": "2020/01/01",
-    "to": "2020/03/30,
+    "to": "2020/03/30",
     "tag": "work",
     "url": ""
   },
 
   {
-    "where": "Technical University of Denmark",
-    "role": "Teaching Assistant in Machine Learning",
-    "from": "2020/01/01",
-    "to": "2020/05/01",
+    "where": "Spanish Red Cross",
+    "role": "Migration Coordination Assistant",
+    "from": "2019/12/01",
+    "to": "2019/02/28",
     "tag": "work",
-    "url": "https://vittoriocarmignani.notion.site/Teaching-Assistant-in-Machine-Learning-bbd70cfe1c474accbbe6ba98f687d1a9"
-  },
-  {
-    "where": "Technical University of Denmark",
-    "role": "External Lecturer in Database Systems",
-    "from": "2021/01/01",
-    "to": "2021/05/01",
-    "tag": "work",
-    "url": "https://vittoriocarmignani.notion.site/External-Lecturer-And-Teaching-Assistant-In-MSc-Database-Course-657e5d43d76e412eb320bdb71dcaacbb"
-  },
-  {
-    "where": "Technical University of Denmark",
-    "role": "Teaching Assistant in Database Systems",
-    "from": "2020/01/01",
-    "to": "2020/05/01",
-    "tag": "work",
-    "url": "https://vittoriocarmignani.notion.site/External-Lecturer-And-Teaching-Assistant-In-MSc-Database-Course-657e5d43d76e412eb320bdb71dcaacbb"
-  },
-  {
-    "where": "University of Padua",
-    "role": "BSc Information Engineering",
-    "from": "2014/08/01",
-    "to": "2017/08/22",
-    "tag": "education",
-    "url": "https://www.microsoft.com/"
-  },
-  {
-    "where": "University of Padua",
-    "role": "MSc Computer Science",
-    "from": "2017/08/23",
-    "to": "2020/11/07",
-    "tag": "education",
-    "url": "https://vittoriocarmignani.notion.site/MSc-Computer-Science-Engineering-eca8772e363c4d35bb7ba0f3876c3f9f"
-  },
-  {
-    "where": "University of Padua",
-    "role": "Double degree project",
-    "from": "2017/08/23",
-    "to": "2020/11/14",
-    "tag": "education",
-    "url": "https://vittoriocarmignani.notion.site/MSc-Computer-Science-Engineering-eca8772e363c4d35bb7ba0f3876c3f9f"
-  },
-  {
-    "where": "Technical University of Denmark",
-    "role": "MSc Human Centered Artificial Intelligence",
-    "from": "2018/08/01",
-    "to": "2020/11/07",
-    "tag": "education",
-    "url": "https://vittoriocarmignani.notion.site/MSc-Human-Centered-Artificial-Intelligence-6a07321857cb44c28d7342fa7885c698"
-  },
-  {
-    "where": "Columbia University of New York",
-    "role": "Artificial Intelligence Course",
-    "from": "2018/01/01",
-    "to": "2018/07/01",
-    "tag": "education",
-    "url": "https://vittoriocarmignani.notion.site/Artificial-Intelligence-Course-1dd54dead15b4e63b0572bb9be527e4d"
-  },
-  {
-    "where": "Local District",
-    "role": "Volunteer",
-    "from": "2014/08/01",
-    "to": "2018/08/01",
-    "tag": "volunteering",
     "url": ""
   },
   {
-    "where": "AIESEC Mauritius",
-    "role": "Volunteer",
-    "from": "2019/05/15",
-    "to": "2019/07/01",
-    "tag": "volunteering",
+    "where": "University Ca' Foscari of Venice",
+    "role": "Master's Degree Comparative International Relations",
+    "from": "2020/10/01",
+    "to": "2023/06/01",
+    "tag": "education",
     "url": ""
-  }
-]
+  },
+  {
+    "where": "University of Foreigners of Siena",
+    "role": "Bachelor's Degree in Linguistic and Cultural Mediaton",
+    "from": "2016/10/01",
+    "to": "2019/12/20",
+    "tag": "education",
+    "url": ""
+  },
+  {
+    "where": "University of Granada",
+    "role": "Erasmus+",
+    "from": "2018/09/01",
+    "to": "2019/02/28",
+    "tag": "education",
+    "url": ""

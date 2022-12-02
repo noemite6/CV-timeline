@@ -1,0 +1,155 @@
+<html lang="en-GB">
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="lib.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages: ["timeline"]});
+
+        const github = "carmignanivittorio/CurriculumTimeline";
+        const font = 'Poppins';
+        let urls = {};
+
+        fetch("https://api.github.com/repos/" + github + "/commits?page=1&per_page=1").then(
+            function (response) {
+                return response.json();
+            }
+        ).then(
+            function (data) {
+                let time = data[0].commit.author.date;
+                let last_update = new Date(time);
+                // modify span last_update with the last update date
+                document.getElementById("last_update").innerHTML = last_update.toLocaleDateString();
+            }
+        )
+
+        /**
+         * Draws a timeline chart.
+         * @param {Object} data The data for the chart.
+         * @param {string} element_id Element ID for the chart [div].
+         */
+        function draw_chart(data, element_id) {
+            const container = document.getElementById(element_id);
+            const chart = new google.visualization.Timeline(container);
+            let dataTable = new google.visualization.DataTable();
+            dataTable.addColumn({type: "string", id: "Where"});
+            dataTable.addColumn({type: "string", id: "Role"});
+            dataTable.addColumn({type: "date", id: "Start"});
+            dataTable.addColumn({type: "date", id: "End"});
+            dataTable.addRows(data);
+
+            const options = {
+                timeline: {
+                    rowLabelStyle: {fontName: font},
+                    barLabelStyle: {fontName: font}
+                }
+            };
+
+            google.visualization.events.addListener(chart, 'select', function () {
+                let selection = chart.getSelection();
+                if (selection.length > 0) {
+                    let url = urls[hash_item_from_row(
+                        dataTable.getValue(selection[0].row, 0), dataTable.getValue(selection[0].row, 1)
+                    )];
+                    if (url) {
+                        window.open(url);
+                    }//if
+                }//if
+            });
+
+            chart.draw(dataTable, options);
+        }//draw_chart
+
+
+        /**
+         * Add the data to the google data table
+         * @param data
+         * @param tag
+         */
+        function add_draw(data, tag) {
+            let f = function func() {
+                draw_chart(data, tag);
+            };
+            google.charts.setOnLoadCallback(f);
+        }//add_draw
+
+
+        // Get the data from the JSON file and draw the charts
+        fetch('data.json')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(
+                function (data) {
+                    let tags = [];
+                    let steps = {};
+                    let life = [];
+
+                    data.forEach(function (item) {
+                        urls[hash_item(item)] = item['url'];
+                        let array = get_array_for_table(item);
+                        try {
+                            steps[item.tag].push(array);
+                        } catch (e) {
+                            steps[item.tag] = [array];
+                            tags.push(item.tag);
+                        }
+                        life.push(array);
+                    });
+
+                    let sort_function = function (a, b) {
+                        return b[3] - a[3];
+                    };
+
+                    // order life by end date desc
+                    life.sort(sort_function);
+
+                    // order each step by end date desc
+                    tags.forEach(function (tag) {
+                        steps[tag].sort(sort_function);
+                    });
+
+                    // Draw the chart for each step and the Life chart
+                    tags.forEach(function (tag) {
+                        add_draw(steps[tag], tag);
+                        let min_max_date = get_min_max_date(steps[tag])
+                        // edit span with id with duration in words
+                        document.getElementById(tag + "-dur").textContent = get_duration_in_years_and_months(min_max_date[0], min_max_date[1]);
+                    });
+                    add_draw(life, 'life');
+                }//function
+            )
+    </script>
+    <link
+            href="https://fonts.googleapis.com/css?family=Poppins"
+            rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet"/>
+    <title>Vittorio's Timeline</title>
+</head>
+<body>
+
+<div id="main">
+    <div id="menu">
+        <div id="left"><a class="button"
+                          href="https://vittoriocarmignani.notion.site/Hi-d24db0042a024af098d86b64a3be2d10"
+                          target="_blank">Vittorio's
+            Notion</a></div>
+        <div id="right">
+            Last update <span id="last_update"></span><br>
+            Based on last <a href="https://github.com/carmignanivittorio/CurriculumTimeline" target="_blank">commit</a>
+        </div>
+    </div>
+    <h1>Vittorio's Timeline</h1>
+
+    <h2>&#128640 Life</h2>
+    <div id="life" style="height: 500px;"></div>
+    <h2>&#128188 Working Life - <span id="work-dur"></span></h2>
+    <div id="work" style="height: 250px;"></div>
+    <h2>&#127891 Student Life - <span id="education-dur"></span></h2>
+    <div id="education" style="height: 220px;"></div>
+    <h2>&#9996 Volunteering Life - <span id="volunteering-dur"></span></h2>
+    <div id="volunteering"></div>
+</div>
+
+</body>
+</html>
